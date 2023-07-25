@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "3edbaa2f-1ef8-46eb-88d8-ac251ba59c05",
+		"name": "Blog app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15205916"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"test@gmail.com\",\n    \"first_name\": \"test\",\n    \"last_name\": \"vishal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3010/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"saurav@gmail.com\",\n    \"password\": \"saurav@mail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3010/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blogs",
+			"item": [
+				{
+					"name": "create blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYXVyYXZAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoic2F1cmF2IiwibGFzdE5hbWUiOiJ2aXNoYWwiLCJpYXQiOjE2OTAzMDc3NzYsImV4cCI6MTY5MDMxMTM3Nn0.Z7FEE5srN_o3vAvwE98VSy9ObQwPwSYl6ONJJMZ5wLs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageLink",
+									"type": "file",
+									"src": "/home/saurav/Desktop/sample_images/image3.jpg"
+								},
+								{
+									"key": "title",
+									"value": "test title",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "test description",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3010/api/blog",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get blog by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYXVyYXZAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoic2F1cmF2IiwibGFzdE5hbWUiOiJ2aXNoYWwiLCJpYXQiOjE2OTAzMDc3NzYsImV4cCI6MTY5MDMxMTM3Nn0.Z7FEE5srN_o3vAvwE98VSy9ObQwPwSYl6ONJJMZ5wLs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3010/api/blog/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"blog",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all blogs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6InRlc3QiLCJsYXN0TmFtZSI6InZpc2hhbCIsImlhdCI6MTY5MDMxMDQ0NywiZXhwIjoxNjkwMzE0MDQ3fQ.ZqKE1K9M298ajodfZfGA3enDJi5ficLz2c19xWLWOdw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"skip\": 1,\n    \"limit\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3010/api/blog",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search blog by title",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6InRlc3QiLCJsYXN0TmFtZSI6InZpc2hhbCIsImlhdCI6MTY5MDMxMDQ0NywiZXhwIjoxNjkwMzE0MDQ3fQ.ZqKE1K9M298ajodfZfGA3enDJi5ficLz2c19xWLWOdw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3010/api/blog/search?title=title11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"blog",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "title11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYXVyYXZAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoic2F1cmF2IiwibGFzdE5hbWUiOiJ2aXNoYWwiLCJpYXQiOjE2OTAzMTE1NzcsImV4cCI6MTY5MDMxNTE3N30.MW5lhLvKztmgl8MRV4Y77ITouwT68hU8_JNDkiPfbxc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageLink",
+									"type": "file",
+									"src": "/home/saurav/Desktop/sample_images/image3.jpg",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "title2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A small description about blog 2. ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3010/api/blog",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete blog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYXVyYXZAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoic2F1cmF2IiwibGFzdE5hbWUiOiJ2aXNoYWwiLCJpYXQiOjE2OTAzMTUxMDcsImV4cCI6MTY5MDMxODcwN30.nH0vS2Ma7N_l_0e1QCc48IOO4aYllZVGeiJIvWUUfjQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3010/api/blog/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"api",
+								"blog",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
